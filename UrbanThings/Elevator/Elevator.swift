@@ -21,21 +21,41 @@ struct UrbanElevator: Elevator{
     
     func calculateLiftTicks(for peopleWeights: [Int], destinations: [Int], numberOfFloors: Int, maxPeople: Int, maxWeight: Int) -> Int {
         
-        if peopleWeights.count != destinations.count {
+        print("\n\nTick     Lift Status\n")
+        
+        if peopleWeights.isEmpty || destinations.isEmpty || peopleWeights.count != destinations.count {
             return 0
         }
-        
+        var ticks = [String]()
         var peopleArray = [Person]()
         
         for (index, weight) in peopleWeights.enumerated() {
             peopleArray.append(Person(weight: weight, destination: destinations[index]))
         }
         
-        let loadedArray = load(waitingArray: &peopleArray, maxPeople: maxPeople, maxWeight: maxWeight)
+        repeat {
+            let arrayBeforeLoading = peopleArray
+            
+            ticks.append("Loading at floor 1")
+            let loadedArray = load(waitingArray: &peopleArray, maxPeople: maxPeople, maxWeight: maxWeight)
+            
+            if peopleArray == arrayBeforeLoading {
+                print("Not able to load because of weight limit")
+                break
+            }
+            
+            let dispatchTicks = startDispatching(persons: loadedArray)
+            ticks.append(contentsOf: dispatchTicks)
+            
+        } while peopleArray.count > 0
         
-        startDispatching(persons: loadedArray)
+        ticks.append("Completed")
         
-        return 1
+        for (index, tick) in ticks.enumerated() {
+            print("\(index+1)     \(tick)\n")
+        }
+
+        return ticks.count
     }
     
     func load(waitingArray: inout [Person],maxPeople: Int, maxWeight: Int) -> [Person] {
@@ -43,9 +63,6 @@ struct UrbanElevator: Elevator{
         guard waitingArray.count > 0 else {
             return []
         }
-        
-        print("Loading at floor 1")
-        
         var loadedArray = [Person]()
         var loadedWeight = 0
         
@@ -99,8 +116,9 @@ struct UrbanElevator: Elevator{
         for index in (1...liftPosition-1).reversed() {
             ticks.append("Moving to floor \(index)")
         }
-        
         return ticks
     }
+    
+    
 
 }
