@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BCB1DA55221A546F0019FC8A /* UrbanThings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB1DA4B221A546F0019FC8A /* UrbanThings.framework */; };
-		BCB1DA5A221A546F0019FC8A /* UrbanThingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DA59221A546F0019FC8A /* UrbanThingsTests.swift */; };
-		BCB1DA5C221A546F0019FC8A /* UrbanThings.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB1DA4E221A546F0019FC8A /* UrbanThings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCB1DA67221A55140019FC8A /* Elevator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DA66221A55140019FC8A /* Elevator.swift */; };
+		BCB9512B221B224B00FC1CB6 /* ElevatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9512A221B224B00FC1CB6 /* ElevatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,11 +24,11 @@
 
 /* Begin PBXFileReference section */
 		BCB1DA4B221A546F0019FC8A /* UrbanThings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UrbanThings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCB1DA4E221A546F0019FC8A /* UrbanThings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UrbanThings.h; sourceTree = "<group>"; };
 		BCB1DA4F221A546F0019FC8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCB1DA54221A546F0019FC8A /* UrbanThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UrbanThingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCB1DA59221A546F0019FC8A /* UrbanThingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanThingsTests.swift; sourceTree = "<group>"; };
 		BCB1DA5B221A546F0019FC8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCB1DA66221A55140019FC8A /* Elevator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elevator.swift; sourceTree = "<group>"; };
+		BCB9512A221B224B00FC1CB6 /* ElevatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 		BCB1DA4D221A546F0019FC8A /* UrbanThings */ = {
 			isa = PBXGroup;
 			children = (
-				BCB1DA4E221A546F0019FC8A /* UrbanThings.h */,
+				BCB1DA65221A54FB0019FC8A /* Elevator */,
 				BCB1DA4F221A546F0019FC8A /* Info.plist */,
 			);
 			path = UrbanThings;
@@ -80,10 +80,18 @@
 		BCB1DA58221A546F0019FC8A /* UrbanThingsTests */ = {
 			isa = PBXGroup;
 			children = (
-				BCB1DA59221A546F0019FC8A /* UrbanThingsTests.swift */,
 				BCB1DA5B221A546F0019FC8A /* Info.plist */,
+				BCB9512A221B224B00FC1CB6 /* ElevatorTests.swift */,
 			);
 			path = UrbanThingsTests;
+			sourceTree = "<group>";
+		};
+		BCB1DA65221A54FB0019FC8A /* Elevator */ = {
+			isa = PBXGroup;
+			children = (
+				BCB1DA66221A55140019FC8A /* Elevator.swift */,
+			);
+			path = Elevator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,7 +101,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCB1DA5C221A546F0019FC8A /* UrbanThings.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +155,7 @@
 				TargetAttributes = {
 					BCB1DA4A221A546F0019FC8A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					BCB1DA53221A546F0019FC8A = {
 						CreatedOnToolsVersion = 10.1;
@@ -194,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCB1DA67221A55140019FC8A /* Elevator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCB1DA5A221A546F0019FC8A /* UrbanThingsTests.swift in Sources */,
+				BCB9512B221B224B00FC1CB6 /* ElevatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +349,7 @@
 		BCB1DA60221A546F0019FC8A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -359,6 +369,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = self.ravikanth.UrbanThings;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -366,6 +377,7 @@
 		BCB1DA61221A546F0019FC8A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -392,6 +404,7 @@
 		BCB1DA63221A546F0019FC8A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = K9V8ERLS88;
@@ -410,6 +423,7 @@
 		BCB1DA64221A546F0019FC8A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = K9V8ERLS88;
