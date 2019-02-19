@@ -12,6 +12,8 @@
 		BCB9512B221B224B00FC1CB6 /* ElevatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9512A221B224B00FC1CB6 /* ElevatorTests.swift */; };
 		BCB9512D221B4A2400FC1CB6 /* ElevatorLoadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9512C221B4A2400FC1CB6 /* ElevatorLoadTests.swift */; };
 		BCB9512F221B4A6400FC1CB6 /* ElevatorDispatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9512E221B4A6400FC1CB6 /* ElevatorDispatchTests.swift */; };
+		BCB95131221B54A200FC1CB6 /* MultipleElevators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB95130221B54A200FC1CB6 /* MultipleElevators.swift */; };
+		BCB95135221B7F3100FC1CB6 /* MultipleElevatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB95134221B7F3100FC1CB6 /* MultipleElevatorsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,8 @@
 		BCB9512A221B224B00FC1CB6 /* ElevatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorTests.swift; sourceTree = "<group>"; };
 		BCB9512C221B4A2400FC1CB6 /* ElevatorLoadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorLoadTests.swift; sourceTree = "<group>"; };
 		BCB9512E221B4A6400FC1CB6 /* ElevatorDispatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorDispatchTests.swift; sourceTree = "<group>"; };
+		BCB95130221B54A200FC1CB6 /* MultipleElevators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleElevators.swift; sourceTree = "<group>"; };
+		BCB95134221B7F3100FC1CB6 /* MultipleElevatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleElevatorsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 				BCB9512A221B224B00FC1CB6 /* ElevatorTests.swift */,
 				BCB9512C221B4A2400FC1CB6 /* ElevatorLoadTests.swift */,
 				BCB9512E221B4A6400FC1CB6 /* ElevatorDispatchTests.swift */,
+				BCB95134221B7F3100FC1CB6 /* MultipleElevatorsTests.swift */,
 			);
 			path = UrbanThingsTests;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				BCB1DA66221A55140019FC8A /* Elevator.swift */,
+				BCB95130221B54A200FC1CB6 /* MultipleElevators.swift */,
 			);
 			path = Elevator;
 			sourceTree = "<group>";
@@ -209,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCB1DA67221A55140019FC8A /* Elevator.swift in Sources */,
+				BCB95131221B54A200FC1CB6 /* MultipleElevators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +226,7 @@
 				BCB9512F221B4A6400FC1CB6 /* ElevatorDispatchTests.swift in Sources */,
 				BCB9512B221B224B00FC1CB6 /* ElevatorTests.swift in Sources */,
 				BCB9512D221B4A2400FC1CB6 /* ElevatorLoadTests.swift in Sources */,
+				BCB95135221B7F3100FC1CB6 /* MultipleElevatorsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

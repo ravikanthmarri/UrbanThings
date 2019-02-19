@@ -22,7 +22,7 @@ class ElevatorTests: XCTestCase {
         XCTAssertEqual(ticks, 0)
     }
 
-    func test_load_one_persons_to_2nd_floor() {
+    func test_load_one_person_to_2nd_floor() {
         
         let sut = UrbanElevator()
         let waitingPersons = [55]

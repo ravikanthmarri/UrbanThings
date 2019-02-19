@@ -9,7 +9,10 @@
 import Foundation
 
 protocol Elevator {
+    
+    var isAvailable: Bool { get set }
     func calculateLiftTicks(for weights:[Int], destinations:[Int], numberOfFloors: Int, maxPeople: Int, maxWeight: Int) -> Int
+
 }
 
 struct Person: Equatable {
@@ -17,7 +20,13 @@ struct Person: Equatable {
     let destination : Int
 }
 
-struct UrbanElevator: Elevator{
+class UrbanElevator: Elevator {
+    
+    var isAvailable: Bool
+    
+    init(isAvailable: Bool = true) {
+        self.isAvailable = isAvailable
+    }
     
     func calculateLiftTicks(for peopleWeights: [Int], destinations: [Int], numberOfFloors: Int, maxPeople: Int, maxWeight: Int) -> Int {
         
@@ -32,6 +41,8 @@ struct UrbanElevator: Elevator{
         for (index, weight) in peopleWeights.enumerated() {
             peopleArray.append(Person(weight: weight, destination: destinations[index]))
         }
+        
+        self.isAvailable = false
         
         repeat {
             let arrayBeforeLoading = peopleArray
@@ -51,10 +62,12 @@ struct UrbanElevator: Elevator{
         
         ticks.append("Completed")
         
+        self.isAvailable = true
+        
         for (index, tick) in ticks.enumerated() {
             print("\(index+1)     \(tick)\n")
         }
-
+        
         return ticks.count
     }
     
@@ -89,8 +102,9 @@ struct UrbanElevator: Elevator{
         if persons.isEmpty {
             return []
         }
-
+        
         var ticks = [String]()
+        // Sort the array by destinations for dispatch
         var sortedArray = persons.sorted(by: { $0.destination < $1.destination })
         var liftPosition = 1
         
@@ -118,7 +132,4 @@ struct UrbanElevator: Elevator{
         }
         return ticks
     }
-    
-    
-
 }
