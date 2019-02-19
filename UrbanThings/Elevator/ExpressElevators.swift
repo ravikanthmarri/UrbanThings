@@ -41,38 +41,37 @@ class MultipleMixedUrbanElevators: ExpressElevators {
             }
         }
         
-        repeat {
-            
-            for (index, elevator) in normalElevtors.enumerated() where normalWaitingPeopleArray.count > 0 {
-                if elevator.isAvailable {
-                    let loadedArray = elevator.load(waitingArray: &normalWaitingPeopleArray, maxPeople: maxPeople, maxWeight: maxWeight)
-                    ticks.append("Loading normal lift in elevator \(index+1) ==> Loaded \(loadedArray.count) people")
-                    let dispatchTicks = elevator.startDispatching(persons: loadedArray)
-                    ticks.append(contentsOf: dispatchTicks)
-                }
-            }
-            
-        } while normalWaitingPeopleArray.count > 0
-
-        repeat {
-            
-            for (index, elevator) in expressElevtors.enumerated() where expressWaitingPeopleArray.count > 0 {
-                if elevator.isAvailable {
-                    let loadedArray = elevator.load(waitingArray: &expressWaitingPeopleArray, maxPeople: maxPeople, maxWeight: maxWeight)
-                    ticks.append("Loading express lift in elevator \(index+1) ==> Loaded \(loadedArray.count) people")
-                    let dispatchTicks = elevator.startDispatching(persons: loadedArray)
-                    ticks.append(contentsOf: dispatchTicks)
-                }
-            }
-            
-        } while expressWaitingPeopleArray.count > 0
+        let normalTicks = loadAndDispatch(normalElevtors, waitingPeopleArray: &normalWaitingPeopleArray, maxPeople: maxPeople, maxWeight: maxWeight)
+        ticks.append(contentsOf: normalTicks)
+        
+        let expressTicks = loadAndDispatch(expressElevtors, waitingPeopleArray: &expressWaitingPeopleArray, maxPeople: maxPeople, maxWeight: maxWeight)
+        ticks.append(contentsOf: expressTicks)
         
         ticks.append("Completed")
-        
         for (index, tick) in ticks.enumerated() {
             print("\(index+1)     \(tick)\n")
         }
         return ticks.count
+    }
+    
+    func loadAndDispatch(_ elevtors: [UrbanElevator], waitingPeopleArray: inout [Person], maxPeople: Int, maxWeight: Int) -> [String] {
+
+        var ticks = [String]()
+
+        repeat {
+            for (index, elevator) in elevtors.enumerated() where waitingPeopleArray.count > 0 {
+                if elevator.isAvailable {
+                    let loadedArray = elevator.load(waitingArray: &waitingPeopleArray, maxPeople: maxPeople, maxWeight: maxWeight)
+                    let type = elevator.isExpress ? "Express" : "Normal"
+                    ticks.append("Loading \(type) lift in elevator \(index+1) ==> Loaded \(loadedArray.count) people")
+                    let dispatchTicks = elevator.startDispatching(persons: loadedArray)
+                    ticks.append(contentsOf: dispatchTicks)
+                }
+            }
+            
+        } while waitingPeopleArray.count > 0
+        
+        return ticks
     }
     
     func createLifts(numberOfLifts: Int, isExpress: Bool) -> [UrbanElevator] {
@@ -80,6 +79,7 @@ class MultipleMixedUrbanElevators: ExpressElevators {
         for _ in 0...numberOfLifts {
             elevtors.append(UrbanElevator(isExpress: isExpress))
         }
+        
         return elevtors
     }
 }
