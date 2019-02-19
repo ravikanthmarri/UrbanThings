@@ -24,28 +24,24 @@ class UrbanElevator: Elevator {
     
     var isAvailable: Bool
     var isExpress: Bool
+    var liftStartPosition: Int
     
-    init(isAvailable: Bool = true, isExpress:Bool = false) {
+    init(isAvailable: Bool = true, isExpress:Bool = false, liftStartPosition:Int = 1) {
         self.isAvailable = isAvailable
         self.isExpress = isExpress
+        self.liftStartPosition = liftStartPosition
     }
     
     func calculateLiftTicks(for peopleWeights: [Int], destinations: [Int], numberOfFloors: Int, maxPeople: Int, maxWeight: Int) -> Int {
         
         print("\n\nTick     Lift Status\n")
         
+        // Data validation
         if peopleWeights.isEmpty || destinations.isEmpty || peopleWeights.count != destinations.count {
             return 0
         }
         var ticks = [String]()
-        var peopleArray = [Person]()
-        
-        for (index, weight) in peopleWeights.enumerated() {
-            if destinations[index] > numberOfFloors {
-                continue
-            }
-            peopleArray.append(Person(weight: weight, destination: destinations[index]))
-        }
+        var peopleArray = createPeopleArray(for: peopleWeights, destinations: destinations, numberOfFloors: numberOfFloors)
         
         self.isAvailable = false
         
@@ -55,6 +51,7 @@ class UrbanElevator: Elevator {
             ticks.append("Loading at floor 1")
             let loadedArray = load(waitingArray: &peopleArray, maxPeople: maxPeople, maxWeight: maxWeight)
             
+            // People are waiting, but not able to load
             if peopleArray == arrayBeforeLoading {
                 print("Not able to load because of weight limit")
                 break
@@ -69,11 +66,28 @@ class UrbanElevator: Elevator {
         
         self.isAvailable = true
         
+        printTicks(ticks: ticks)
+        
+        return ticks.count
+    }
+    
+    func printTicks(ticks: [String]) {
         for (index, tick) in ticks.enumerated() {
             print("\(index+1)     \(tick)\n")
         }
+    }
+    
+    func createPeopleArray(for peopleWeights: [Int], destinations: [Int], numberOfFloors: Int) -> [Person] {
         
-        return ticks.count
+        var peopleArray = [Person]()
+        
+        for (index, weight) in peopleWeights.enumerated() {
+            if destinations[index] > numberOfFloors {
+                continue
+            }
+            peopleArray.append(Person(weight: weight, destination: destinations[index]))
+        }
+        return peopleArray
     }
     
     func load(waitingArray: inout [Person],maxPeople: Int, maxWeight: Int) -> [Person] {
@@ -92,13 +106,14 @@ class UrbanElevator: Elevator {
                 loadedArray.append(firstPerson)
                 waitingArray.removeFirst()
                 if loadedArray.count >= maxPeople {
+                    // Reached max people limit
                     break
                 }
             } else {
+                // Reached max weight limit
                 break
             }
         }
-        
         return loadedArray
     }
     
@@ -111,41 +126,51 @@ class UrbanElevator: Elevator {
         var ticks = [String]()
         // Sort the array by destinations for dispatch
         var sortedArray = persons.sorted(by: { $0.destination < $1.destination })
-        var liftPosition = 1
+        // Lift start position
+        var liftPosition = self.liftStartPosition
         
         repeat {
+            // Guaranteed to have atleast one item
             let unloadPerson = sortedArray[0]
             
             if unloadPerson.destination <= liftPosition {
                 break
             }
-            
-//            for index in liftPosition+1...unloadPerson.destination {
-//                ticks.append("Moving to floor \(index)")
-//            }
-            
+
+            // Move lift to first destination
             repeat {
-                liftPosition = liftPosition+1
+                liftPosition = liftPosition + 1
                 if isExpress {
                     if liftPosition % 2 != 0 {
-                        liftPosition = liftPosition+1
+                        liftPosition = liftPosition + 1
                     }
                 }
                 ticks.append("Moving to floor \(liftPosition)")
             } while liftPosition < unloadPerson.destination
             
             liftPosition = unloadPerson.destination
+            
             ticks.append("Unloading at floor \(liftPosition)")
+            // Unload all the people with that destination
             sortedArray.forEach { (person) in
                 if person.destination == liftPosition {
                     sortedArray.removeFirst()
                 }
             }
+         // Repeat until loaded people are dispatched
         } while sortedArray.count > 0
         
-        for index in (1...liftPosition-1).reversed() {
-            ticks.append("Moving to floor \(index)")
-        }
+        // Move the lift back to first floor
+        repeat {
+            liftPosition = liftPosition-1
+            if isExpress && liftPosition != 1 {
+                if liftPosition % 2 != 0 {
+                    liftPosition = liftPosition - 1
+                }
+            }
+            ticks.append("Moving to floor \(liftPosition)")
+        } while liftPosition > 1
+        
         return ticks
     }
 }

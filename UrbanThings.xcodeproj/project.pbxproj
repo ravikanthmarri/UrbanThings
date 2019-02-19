@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC76235F221C3A9000FE45BC /* ExpressElevators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC76235E221C3A9000FE45BC /* ExpressElevators.swift */; };
+		BC762361221C6C6F00FE45BC /* ExpressElevatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC762360221C6C6F00FE45BC /* ExpressElevatorsTests.swift */; };
 		BCB1DA55221A546F0019FC8A /* UrbanThings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB1DA4B221A546F0019FC8A /* UrbanThings.framework */; };
 		BCB1DA67221A55140019FC8A /* Elevator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DA66221A55140019FC8A /* Elevator.swift */; };
 		BCB9512B221B224B00FC1CB6 /* ElevatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9512A221B224B00FC1CB6 /* ElevatorTests.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		BC76235E221C3A9000FE45BC /* ExpressElevators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressElevators.swift; sourceTree = "<group>"; };
+		BC762360221C6C6F00FE45BC /* ExpressElevatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressElevatorsTests.swift; sourceTree = "<group>"; };
 		BCB1DA4B221A546F0019FC8A /* UrbanThings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UrbanThings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB1DA4F221A546F0019FC8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCB1DA54221A546F0019FC8A /* UrbanThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UrbanThingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 				BCB9512C221B4A2400FC1CB6 /* ElevatorLoadTests.swift */,
 				BCB9512E221B4A6400FC1CB6 /* ElevatorDispatchTests.swift */,
 				BCB95134221B7F3100FC1CB6 /* MultipleElevatorsTests.swift */,
+				BC762360221C6C6F00FE45BC /* ExpressElevatorsTests.swift */,
 			);
 			path = UrbanThingsTests;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCB9512F221B4A6400FC1CB6 /* ElevatorDispatchTests.swift in Sources */,
+				BC762361221C6C6F00FE45BC /* ExpressElevatorsTests.swift in Sources */,
 				BCB9512B221B224B00FC1CB6 /* ElevatorTests.swift in Sources */,
 				BCB9512D221B4A2400FC1CB6 /* ElevatorLoadTests.swift in Sources */,
 				BCB95135221B7F3100FC1CB6 /* MultipleElevatorsTests.swift in Sources */,

@@ -33,8 +33,19 @@ class ElevatorTests: XCTestCase {
         XCTAssertEqual(ticks, 5)
     }
 
+    func test_sample_input_ordinary_lift_1_trip() {
+        
+        let sut = UrbanElevator()
+        let waitingPersons = [60, 80]
+        let waitingDestinations = [2, 3]
+        
+        let ticks = sut.calculateLiftTicks(for: waitingPersons, destinations: waitingDestinations, numberOfFloors: 5, maxPeople: 2, maxWeight: 200)
+        
+        XCTAssertEqual(ticks, 8)
+    }
+
     
-    func test_sample_input() {
+    func test_sample_input_ordinary_lift_2_trips() {
         
         let sut = UrbanElevator()
         let waitingPersons = [60, 80, 40]
@@ -43,7 +54,31 @@ class ElevatorTests: XCTestCase {
         let ticks = sut.calculateLiftTicks(for: waitingPersons, destinations: waitingDestinations, numberOfFloors: 5, maxPeople: 2, maxWeight: 200)
         
         XCTAssertEqual(ticks, 12)
-        
     }
+
+    func test_sample_input1_express_lift_1_trip() {
+        
+        let sut = UrbanElevator(isExpress: true)
+        let waitingPersons = [60, 80]
+        let waitingDestinations = [4, 6]
+        
+        let ticks = sut.calculateLiftTicks(for: waitingPersons, destinations: waitingDestinations, numberOfFloors: 6, maxPeople: 2, maxWeight: 200)
+        
+        XCTAssertEqual(ticks, 10)
+    }
+
+    func test_sample_input2_express_lift_2_trips() {
+        
+        let sut = UrbanElevator(isExpress: true)
+        let waitingPersons = [60, 80, 90]
+        let waitingDestinations = [4, 6, 4]
+        
+        let ticks = sut.calculateLiftTicks(for: waitingPersons, destinations: waitingDestinations, numberOfFloors: 6, maxPeople: 2, maxWeight: 200)
+        
+        XCTAssertEqual(ticks, 16)
+    }
+
+    
+    
 
 }

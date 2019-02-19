@@ -12,7 +12,7 @@ import XCTest
 
 class MultipleElevatorsTests: XCTestCase {
 
-    func test_load_zero_persons_no_waiting_persons() {
+    func test_load_no_waiting_persons() {
         
         let sut = MultipleUrbanElevators()
         let waitingPersons = [Int]()
