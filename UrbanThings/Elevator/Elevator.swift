@@ -23,9 +23,11 @@ struct Person: Equatable {
 class UrbanElevator: Elevator {
     
     var isAvailable: Bool
+    var isExpress: Bool
     
-    init(isAvailable: Bool = true) {
+    init(isAvailable: Bool = true, isExpress:Bool = false) {
         self.isAvailable = isAvailable
+        self.isExpress = isExpress
     }
     
     func calculateLiftTicks(for peopleWeights: [Int], destinations: [Int], numberOfFloors: Int, maxPeople: Int, maxWeight: Int) -> Int {
@@ -39,6 +41,9 @@ class UrbanElevator: Elevator {
         var peopleArray = [Person]()
         
         for (index, weight) in peopleWeights.enumerated() {
+            if destinations[index] > numberOfFloors {
+                continue
+            }
             peopleArray.append(Person(weight: weight, destination: destinations[index]))
         }
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC76235F221C3A9000FE45BC /* ExpressElevators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC76235E221C3A9000FE45BC /* ExpressElevators.swift */; };
 		BCB1DA55221A546F0019FC8A /* UrbanThings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB1DA4B221A546F0019FC8A /* UrbanThings.framework */; };
 		BCB1DA67221A55140019FC8A /* Elevator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DA66221A55140019FC8A /* Elevator.swift */; };
 		BCB9512B221B224B00FC1CB6 /* ElevatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9512A221B224B00FC1CB6 /* ElevatorTests.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC76235E221C3A9000FE45BC /* ExpressElevators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressElevators.swift; sourceTree = "<group>"; };
 		BCB1DA4B221A546F0019FC8A /* UrbanThings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UrbanThings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB1DA4F221A546F0019FC8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCB1DA54221A546F0019FC8A /* UrbanThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UrbanThingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 			children = (
 				BCB1DA66221A55140019FC8A /* Elevator.swift */,
 				BCB95130221B54A200FC1CB6 /* MultipleElevators.swift */,
+				BC76235E221C3A9000FE45BC /* ExpressElevators.swift */,
 			);
 			path = Elevator;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC76235F221C3A9000FE45BC /* ExpressElevators.swift in Sources */,
 				BCB1DA67221A55140019FC8A /* Elevator.swift in Sources */,
 				BCB95131221B54A200FC1CB6 /* MultipleElevators.swift in Sources */,
 			);
