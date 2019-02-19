@@ -120,9 +120,20 @@ class UrbanElevator: Elevator {
                 break
             }
             
-            for index in liftPosition+1...unloadPerson.destination {
-                ticks.append("Moving to floor \(index)")
-            }
+//            for index in liftPosition+1...unloadPerson.destination {
+//                ticks.append("Moving to floor \(index)")
+//            }
+            
+            repeat {
+                liftPosition = liftPosition+1
+                if isExpress {
+                    if liftPosition % 2 != 0 {
+                        liftPosition = liftPosition+1
+                    }
+                }
+                ticks.append("Moving to floor \(liftPosition)")
+            } while liftPosition < unloadPerson.destination
+            
             liftPosition = unloadPerson.destination
             ticks.append("Unloading at floor \(liftPosition)")
             sortedArray.forEach { (person) in
